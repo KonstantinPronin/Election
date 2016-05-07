@@ -1,10 +1,7 @@
-//#pragma once
-//#include<string>
 #include<vector>
 #include"error.h"
 #include<iostream>
-//#include"city.h"
-//#include"poll.h"
+
 
 class Poll;
 class City;
@@ -16,26 +13,21 @@ class Candidate{
 		Candidate(){
 			VotesNum = 0;
 		}
-//		void AddToCandidate(){
-//			City::cands.push_back(this);		
-//		}
 };
 
 class Elector:public Candidate{
 	friend Poll;
-	//int PollNumber;
+	size_t PollNumber;
 	std::string FName;
 	std::string SName;
-	//bool status;
 	bool vote;
 	public:
-		Elector(std::string str1, std::string str2){
-			//PollNumber = poll;
+		Elector(std::string str1, std::string str2, size_t num){
+			PollNumber = num;
 			FName = str1;
 			SName = str2;
 			vote = true;
 			Candidate();
-			//std::cout << "Ok";
 		}
 		
 //		int GetPollNum(){
@@ -53,9 +45,5 @@ class Elector:public Candidate{
 			std::cout << FName << ' ' << SName << '\n';
 		}
 		
-//		~Elector(){
-//			FindPoll(PollNumber)->DeleteElector(*this); 
-//		}
 };
-
 
