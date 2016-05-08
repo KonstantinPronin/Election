@@ -15,6 +15,7 @@ class Poll{
 		void DeleteElector(std::string str1, std::string str2);
 		size_t ThisPollNum() {return number;}
 		std::vector<Elector*>& ElectorList(){return elctrs;}
+		std::vector<Elector*> CopyElectorList(){return elctrs;}
 		void ShowThis() const;
 		void ShowElectors() const;
 		~Poll();
@@ -29,9 +30,11 @@ void Poll::AddElector(std::string str1, std::string str2){
 Elector* Poll::FindElector(std::string str1, std::string str2){
 	if (elctrs.empty()) throw Error("No polls");
 	for (size_t i = 0; i < elctrs.size(); i++){
+		//std::cout << "OK";
 		if (elctrs[i]->FName == str1 && elctrs[i]->SName == str2)
 			return elctrs[i];
 	}
+	
 	throw Error("No such elector");	
 }
 
@@ -45,11 +48,12 @@ void Poll::DeleteElector(std::string str1, std::string str2){
 	delete ptr;
 }
 
-void Poll::ShowThis() const{
+void Poll::ShowThis() const{ 
 	std::cout << number << ' ' << name << '\n';
 }
 
 void Poll::ShowElectors() const{
+	std::cout << number << ' ' << name << ":\n";
 	if (elctrs.size() == 0) throw Error("No Electors");
 	for (size_t i = 0; i < elctrs.size(); ++i)
 		elctrs[i]->ShowThis();
