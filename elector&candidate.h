@@ -11,15 +11,13 @@ class Candidate;
 class Elector{
 	friend Poll;
 	friend Candidate;
-	size_t PollNumber;
 	std::string FName;
 	std::string SName;
 	bool vote;
 	std::string CandFName;
 	std::string CandSName;
 	public:
-		Elector(std::string str1, std::string str2, size_t num){
-			PollNumber = num;
+		Elector(std::string str1, std::string str2){
 			FName = str1;
 			SName = str2;
 			vote = true;
@@ -31,6 +29,8 @@ class Elector{
 			FName = base->FName; 
 			SName = base->SName;
 			vote = base->vote;
+			CandFName = base->CandFName;
+			CandSName = base->CandSName;
 		}		
 		void ShowThis() const{
 			std::cout << FName << ' ' << SName << '\n';
