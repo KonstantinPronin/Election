@@ -25,7 +25,7 @@ class Poll{
 
 
 void Poll::AddElector(std::string str1, std::string str2){
-	Elector* NewEl= new Elector(str1, str2, number);
+	Elector* NewEl= new Elector(str1, str2);
 	elctrs.push_back(NewEl);
 }
 
