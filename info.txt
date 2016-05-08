@@ -105,14 +105,13 @@ class Poll{
 class Elector{
 	friend Poll;
 	friend Candidate;
-	size_t PollNumber;	//Номер участка, к которму принадлежит избиратель
 	std::string FName;	//Имя
 	std::string SName;	//Фамилия
 	bool vote;		//Флаг голосования: 1 - есть возможность голосовать, 0 - уже проголосовал
 	std::string CandFName;	//Имя кандидата, за которого голосует избирателей
 	std::string CandSName;	//Фамилия кандидата, за которого голосует избирателей
 	public:
-		Elector(std::string str1, std::string str2, size_t num);	//конструктор
+		Elector(std::string str1, std::string str2);	//конструктор
 		Elector(Elector* base);	//конструктор копирования		
 		void ShowThis() const;	//печать характеристик избирателя
 		void Vote(std::string str1, std::string str2);	//метод голосования 
