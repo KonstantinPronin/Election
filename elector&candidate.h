@@ -15,12 +15,16 @@ class Elector{
 	std::string FName;
 	std::string SName;
 	bool vote;
+	std::string CandFName;
+	std::string CandSName;
 	public:
 		Elector(std::string str1, std::string str2, size_t num){
 			PollNumber = num;
 			FName = str1;
 			SName = str2;
 			vote = true;
+			CandFName = "didn`t";
+			CandSName = "vote";
 		}
 		Elector(Elector* base){
 			PollNumber = base->PollNumber;
@@ -30,6 +34,16 @@ class Elector{
 		}		
 		void ShowThis() const{
 			std::cout << FName << ' ' << SName << '\n';
+		}
+		void Vote(std::string str1, std::string str2){
+			if (!vote) throw Error("The elector has already voted\n");
+			vote = false;
+			CandFName = str1;
+			CandSName = str2;
+		}
+		void Statistics() const{
+			if (vote) std::cout << FName << ' ' << SName << ' ' << "Didn`t vote\n";
+			else std::cout << FName << ' ' << SName << " voted for " << CandFName << ' ' << CandSName << '\n';
 		}
 		
 };
@@ -49,7 +63,8 @@ class Candidate{
 				else return false;
 		}
 		size_t GetVotes(){return VotesNum;}
-		void PrintMe(){
+		void AddVote(){VotesNum++;}
+		void PrintMe() const{
 			std::cout << parent->FName << ' ' << parent->SName << '\n';
 		}
 };
