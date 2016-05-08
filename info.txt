@@ -1,0 +1,132 @@
+//Класс город, главный класс, управляет всем происходящим
+class City{
+	std::vector<Poll*> polls;	//Список всех узбирательных участков	
+	
+	std::map<size_t, Candidate*> cands;	//Список всех кандидатов
+	
+	int ElectionStatus;	//Переменная, отвечающая за статус выборов
+				//-1 выборы закрыты
+				//0 выборы созданы
+				//1 выборы окончены
+				//2 выборы начались	
+	public:
+		//Конструктор
+		City():ElectionStatus(-1){}
+		
+		//Методы, связанные с выборами
+		
+		void CreateElection();	//Создание выборов
+					//Можно добавлять и удалять кандидатов
+		
+		void StartElection();	//Начало выборов
+					//Можно голосовать
+		
+		void FinishElection();	//Конец выборов
+					//Можно узнать победителя и увидеть статистику
+
+		void CloseElection();	//Закрытие выборов
+					//Все кандидаты отзываются
+
+		void Statistics(size_t PollNum);//Получение статистики голосования в конкретном участке
+
+		void AllStatistics();	//Получение всей статистики выборов
+
+		//Методы, связанные с учатками
+		void AddPoll(size_t num, std::string str);	//Добавление участка по номеру и названию
+
+		Poll* FindPoll(size_t num);	//Поиск участка по его номеру
+						
+		void DeletePoll(size_t num);	//Удаление участка по номеру
+
+		void ShowPolls() const;	//Демонстрация учатков
+
+		void ShowElectorsFromPoll(size_t PollNum); //Демонстрация избирателей в конкретном участке
+
+		void Merge(size_t FirstId, size_t SecondId);	//Слияние участков
+		
+		//Методы, связанные с избирателями
+		void AddElector(size_t PollNum, std::string str1, std::string str2);	//Добавление избирателя по номеру участка, имени и фамилии
+
+		void DeleteElector(size_t PollNum, std::string str1, std::string str2);	//Удаление избирателя по номеру участка, имени и фамилии
+
+		void ShowAllElectors() const; //Демонстрация всех избирателей
+		
+		//Метод для голосования
+		//Номер участка, имя и фамилия избирателя, который голосует
+		//Имя и Фамилия, за которого голосуют  
+		void Vote(size_t PollNum, std::string fname, std::string sname, std::string candfname, std::string candsname); 
+		
+		//Методы, связанные с кандидатами
+		
+		void AddCandidate(size_t Pollnum, std::string fname, std::string sname);	//Добавление кандидата
+
+		size_t FindCandidate(std::string fname, std::string sname);	//Поиск кандидата по имени и фамилии
+
+		void DelCandidate(std::string fname, std::string sname);	//Удаление кандидата по имени и фамилии
+
+		void ShowCandidates() const;	//Демонстрация кандидатов
+		void SelectWinner();	//Выбор победителя
+		~City();	//деструктор
+};
+
+//Класс участок
+class Poll{
+	size_t number;	//Номер участка
+
+	std::string name;	//Название участка
+
+	std::vector<Elector*> elctrs; //Список избирателей 
+
+	public:
+		Poll(size_t num, std::string str):number(num), name(str){}	//Конструктор
+
+		void AddElector(std::string str1, std::string str2);	//Добавление избирателя
+
+		Elector* FindElector(std::string str1, std::string str2);	//Поиск избирателя
+
+		void DeleteElector(std::string str1, std::string str2);	//Удаление избирателя
+
+		size_t ThisPollNum() {return number;}	//Метод возвращает номер участка
+
+		std::vector<Elector*>& ElectorList(){return elctrs;}	//Метод возвращает ссылку на список избирателей
+
+		std::vector<Elector*> CopyElectorList(){return elctrs;}	//Метод возвращает список избирателей
+
+		void ShowThis() const;	//Демонстрация номера и названия участка
+
+		void ShowElectors() const;	//Демонстрация избирателей в уастке
+
+		void Statistics() const;	//Демонстрация статистики по участку
+		
+		~Poll();//Деструктор
+};
+
+//Класс избиратель
+class Elector{
+	friend Poll;
+	friend Candidate;
+	size_t PollNumber;	//Номер участка, к которму принадлежит избиратель
+	std::string FName;	//Имя
+	std::string SName;	//Фамилия
+	bool vote;		//Флаг голосования: 1 - есть возможность голосовать, 0 - уже проголосовал
+	std::string CandFName;	//Имя кандидата, за которого голосует избирателей
+	std::string CandSName;	//Фамилия кандидата, за которого голосует избирателей
+	public:
+		Elector(std::string str1, std::string str2, size_t num);	//конструктор
+		Elector(Elector* base);	//конструктор копирования		
+		void ShowThis() const;	//печать характеристик избирателя
+		void Vote(std::string str1, std::string str2);	//метод голосования 
+		void Statistics() const;	//стаистика избирателя
+};
+
+//класс кандидат
+class Candidate{
+	size_t VotesNum;	//кол-во голосов
+	Elector* parent;	//указатель на избирателя, от которого образован кандидат
+	public:
+		Candidate(Elector* ptr);	//конструктор
+		bool compare(std::string str1, std::string str2)	//метод сравнивает строки с именем и фамилией избирателя, от которого образован кандидат
+		size_t GetVotes(){return VotesNum;}	//Метод возвращает кол-во голосов
+		void AddVote(){VotesNum++;}	//Метод добавления голосов
+		void PrintMe() const;	//Демонстрация хар-тик кандидата
+};
