@@ -11,9 +11,6 @@ typedef std::map<size_t, Candidate*>::const_iterator const_m_iter;
 
 
 class City{
-	friend Poll;
-	friend Candidate;
-	friend Elector;
 	std::vector<Poll*> polls;	
 	std::map<size_t, Candidate*> cands;
 	int ElectionStatus;		
