@@ -1,132 +1,132 @@
-//Класс город, главный класс, управляет всем происходящим
+//РљР»Р°СЃСЃ РіРѕСЂРѕРґ, РіР»Р°РІРЅС‹Р№ РєР»Р°СЃСЃ, СѓРїСЂР°РІР»СЏРµС‚ РІСЃРµРј РїСЂРѕРёСЃС…РѕРґСЏС‰РёРј
 class City{
-	std::vector<Poll*> polls;	//Список всех узбирательных участков	
+	std::vector<Poll*> polls;	//РЎРїРёСЃРѕРє РІСЃРµС… СѓР·Р±РёСЂР°С‚РµР»СЊРЅС‹С… СѓС‡Р°СЃС‚РєРѕРІ	
 	
-	std::map<size_t, Candidate*> cands;	//Список всех кандидатов
+	std::map<size_t, Candidate*> cands;	//РЎРїРёСЃРѕРє РІСЃРµС… РєР°РЅРґРёРґР°С‚РѕРІ
 	
-	int ElectionStatus;	//Переменная, отвечающая за статус выборов
-				//-1 выборы закрыты
-				//0 выборы созданы
-				//1 выборы окончены
-				//2 выборы начались	
+	int ElectionStatus;	//РџРµСЂРµРјРµРЅРЅР°СЏ, РѕС‚РІРµС‡Р°СЋС‰Р°СЏ Р·Р° СЃС‚Р°С‚СѓСЃ РІС‹Р±РѕСЂРѕРІ
+				//-1 РІС‹Р±РѕСЂС‹ Р·Р°РєСЂС‹С‚С‹
+				//0 РІС‹Р±РѕСЂС‹ СЃРѕР·РґР°РЅС‹
+				//1 РІС‹Р±РѕСЂС‹ РѕРєРѕРЅС‡РµРЅС‹
+				//2 РІС‹Р±РѕСЂС‹ РЅР°С‡Р°Р»РёСЃСЊ	
 	public:
-		//Конструктор
+		//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 		City():ElectionStatus(-1){}
 		
-		//Методы, связанные с выборами
+		//РњРµС‚РѕРґС‹, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РІС‹Р±РѕСЂР°РјРё
 		
-		void CreateElection();	//Создание выборов
-					//Можно добавлять и удалять кандидатов
+		void CreateElection();	//РЎРѕР·РґР°РЅРёРµ РІС‹Р±РѕСЂРѕРІ
+					//РњРѕР¶РЅРѕ РґРѕР±Р°РІР»СЏС‚СЊ Рё СѓРґР°Р»СЏС‚СЊ РєР°РЅРґРёРґР°С‚РѕРІ
 		
-		void StartElection();	//Начало выборов
-					//Можно голосовать
+		void StartElection();	//РќР°С‡Р°Р»Рѕ РІС‹Р±РѕСЂРѕРІ
+					//РњРѕР¶РЅРѕ РіРѕР»РѕСЃРѕРІР°С‚СЊ
 		
-		void FinishElection();	//Конец выборов
-					//Можно узнать победителя и увидеть статистику
+		void FinishElection();	//РљРѕРЅРµС† РІС‹Р±РѕСЂРѕРІ
+					//РњРѕР¶РЅРѕ СѓР·РЅР°С‚СЊ РїРѕР±РµРґРёС‚РµР»СЏ Рё СѓРІРёРґРµС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ
 
-		void CloseElection();	//Закрытие выборов
-					//Все кандидаты отзываются
+		void CloseElection();	//Р—Р°РєСЂС‹С‚РёРµ РІС‹Р±РѕСЂРѕРІ
+					//Р’СЃРµ РєР°РЅРґРёРґР°С‚С‹ РѕС‚Р·С‹РІР°СЋС‚СЃСЏ
 
-		void Statistics(size_t PollNum);//Получение статистики голосования в конкретном участке
+		void Statistics(size_t PollNum);//РџРѕР»СѓС‡РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё РіРѕР»РѕСЃРѕРІР°РЅРёСЏ РІ РєРѕРЅРєСЂРµС‚РЅРѕРј СѓС‡Р°СЃС‚РєРµ
 
-		void AllStatistics();	//Получение всей статистики выборов
+		void AllStatistics();	//РџРѕР»СѓС‡РµРЅРёРµ РІСЃРµР№ СЃС‚Р°С‚РёСЃС‚РёРєРё РІС‹Р±РѕСЂРѕРІ
 
-		//Методы, связанные с учатками
-		void AddPoll(size_t num, std::string str);	//Добавление участка по номеру и названию
+		//РњРµС‚РѕРґС‹, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ СѓС‡Р°С‚РєР°РјРё
+		void AddPoll(size_t num, std::string str);	//Р”РѕР±Р°РІР»РµРЅРёРµ СѓС‡Р°СЃС‚РєР° РїРѕ РЅРѕРјРµСЂСѓ Рё РЅР°Р·РІР°РЅРёСЋ
 
-		Poll* FindPoll(size_t num);	//Поиск участка по его номеру
+		Poll* FindPoll(size_t num);	//РџРѕРёСЃРє СѓС‡Р°СЃС‚РєР° РїРѕ РµРіРѕ РЅРѕРјРµСЂСѓ
 						
-		void DeletePoll(size_t num);	//Удаление участка по номеру
+		void DeletePoll(size_t num);	//РЈРґР°Р»РµРЅРёРµ СѓС‡Р°СЃС‚РєР° РїРѕ РЅРѕРјРµСЂСѓ
 
-		void ShowPolls() const;	//Демонстрация учатков
+		void ShowPolls() const;	//Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ СѓС‡Р°С‚РєРѕРІ
 
-		void ShowElectorsFromPoll(size_t PollNum); //Демонстрация избирателей в конкретном участке
+		void ShowElectorsFromPoll(size_t PollNum); //Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РёР·Р±РёСЂР°С‚РµР»РµР№ РІ РєРѕРЅРєСЂРµС‚РЅРѕРј СѓС‡Р°СЃС‚РєРµ
 
-		void Merge(size_t FirstId, size_t SecondId);	//Слияние участков
+		void Merge(size_t FirstId, size_t SecondId);	//РЎР»РёСЏРЅРёРµ СѓС‡Р°СЃС‚РєРѕРІ
 		
-		//Методы, связанные с избирателями
-		void AddElector(size_t PollNum, std::string str1, std::string str2);	//Добавление избирателя по номеру участка, имени и фамилии
+		//РњРµС‚РѕРґС‹, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РёР·Р±РёСЂР°С‚РµР»СЏРјРё
+		void AddElector(size_t PollNum, std::string str1, std::string str2);	//Р”РѕР±Р°РІР»РµРЅРёРµ РёР·Р±РёСЂР°С‚РµР»СЏ РїРѕ РЅРѕРјРµСЂСѓ СѓС‡Р°СЃС‚РєР°, РёРјРµРЅРё Рё С„Р°РјРёР»РёРё
 
-		void DeleteElector(size_t PollNum, std::string str1, std::string str2);	//Удаление избирателя по номеру участка, имени и фамилии
+		void DeleteElector(size_t PollNum, std::string str1, std::string str2);	//РЈРґР°Р»РµРЅРёРµ РёР·Р±РёСЂР°С‚РµР»СЏ РїРѕ РЅРѕРјРµСЂСѓ СѓС‡Р°СЃС‚РєР°, РёРјРµРЅРё Рё С„Р°РјРёР»РёРё
 
-		void ShowAllElectors() const; //Демонстрация всех избирателей
+		void ShowAllElectors() const; //Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РІСЃРµС… РёР·Р±РёСЂР°С‚РµР»РµР№
 		
-		//Метод для голосования
-		//Номер участка, имя и фамилия избирателя, который голосует
-		//Имя и Фамилия, за которого голосуют  
+		//РњРµС‚РѕРґ РґР»СЏ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ
+		//РќРѕРјРµСЂ СѓС‡Р°СЃС‚РєР°, РёРјСЏ Рё С„Р°РјРёР»РёСЏ РёР·Р±РёСЂР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ РіРѕР»РѕСЃСѓРµС‚
+		//РРјСЏ Рё Р¤Р°РјРёР»РёСЏ, Р·Р° РєРѕС‚РѕСЂРѕРіРѕ РіРѕР»РѕСЃСѓСЋС‚  
 		void Vote(size_t PollNum, std::string fname, std::string sname, std::string candfname, std::string candsname); 
 		
-		//Методы, связанные с кандидатами
+		//РњРµС‚РѕРґС‹, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РєР°РЅРґРёРґР°С‚Р°РјРё
 		
-		void AddCandidate(size_t Pollnum, std::string fname, std::string sname);	//Добавление кандидата
+		void AddCandidate(size_t Pollnum, std::string fname, std::string sname);	//Р”РѕР±Р°РІР»РµРЅРёРµ РєР°РЅРґРёРґР°С‚Р°
 
-		size_t FindCandidate(std::string fname, std::string sname);	//Поиск кандидата по имени и фамилии
+		size_t FindCandidate(std::string fname, std::string sname);	//РџРѕРёСЃРє РєР°РЅРґРёРґР°С‚Р° РїРѕ РёРјРµРЅРё Рё С„Р°РјРёР»РёРё
 
-		void DelCandidate(std::string fname, std::string sname);	//Удаление кандидата по имени и фамилии
+		void DelCandidate(std::string fname, std::string sname);	//РЈРґР°Р»РµРЅРёРµ РєР°РЅРґРёРґР°С‚Р° РїРѕ РёРјРµРЅРё Рё С„Р°РјРёР»РёРё
 
-		void ShowCandidates() const;	//Демонстрация кандидатов
-		void SelectWinner();	//Выбор победителя
-		~City();	//деструктор
+		void ShowCandidates() const;	//Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РєР°РЅРґРёРґР°С‚РѕРІ
+		void SelectWinner();	//Р’С‹Р±РѕСЂ РїРѕР±РµРґРёС‚РµР»СЏ
+		~City();	//РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 };
 
-//Класс участок
+//РљР»Р°СЃСЃ СѓС‡Р°СЃС‚РѕРє
 class Poll{
-	size_t number;	//Номер участка
+	size_t number;	//РќРѕРјРµСЂ СѓС‡Р°СЃС‚РєР°
 
-	std::string name;	//Название участка
+	std::string name;	//РќР°Р·РІР°РЅРёРµ СѓС‡Р°СЃС‚РєР°
 
-	std::vector<Elector*> elctrs; //Список избирателей 
+	std::vector<Elector*> elctrs; //РЎРїРёСЃРѕРє РёР·Р±РёСЂР°С‚РµР»РµР№ 
 
 	public:
-		Poll(size_t num, std::string str):number(num), name(str){}	//Конструктор
+		Poll(size_t num, std::string str):number(num), name(str){}	//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 
-		void AddElector(std::string str1, std::string str2);	//Добавление избирателя
+		void AddElector(std::string str1, std::string str2);	//Р”РѕР±Р°РІР»РµРЅРёРµ РёР·Р±РёСЂР°С‚РµР»СЏ
 
-		Elector* FindElector(std::string str1, std::string str2);	//Поиск избирателя
+		Elector* FindElector(std::string str1, std::string str2);	//РџРѕРёСЃРє РёР·Р±РёСЂР°С‚РµР»СЏ
 
-		void DeleteElector(std::string str1, std::string str2);	//Удаление избирателя
+		void DeleteElector(std::string str1, std::string str2);	//РЈРґР°Р»РµРЅРёРµ РёР·Р±РёСЂР°С‚РµР»СЏ
 
-		size_t ThisPollNum() {return number;}	//Метод возвращает номер участка
+		size_t ThisPollNum() {return number;}	//РњРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ РЅРѕРјРµСЂ СѓС‡Р°СЃС‚РєР°
 
-		std::vector<Elector*>& ElectorList(){return elctrs;}	//Метод возвращает ссылку на список избирателей
+		std::vector<Elector*>& ElectorList(){return elctrs;}	//РњРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ СЃСЃС‹Р»РєСѓ РЅР° СЃРїРёСЃРѕРє РёР·Р±РёСЂР°С‚РµР»РµР№
 
-		std::vector<Elector*> CopyElectorList(){return elctrs;}	//Метод возвращает список избирателей
+		std::vector<Elector*> CopyElectorList(){return elctrs;}	//РњРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РёР·Р±РёСЂР°С‚РµР»РµР№
 
-		void ShowThis() const;	//Демонстрация номера и названия участка
+		void ShowThis() const;	//Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РЅРѕРјРµСЂР° Рё РЅР°Р·РІР°РЅРёСЏ СѓС‡Р°СЃС‚РєР°
 
-		void ShowElectors() const;	//Демонстрация избирателей в уастке
+		void ShowElectors() const;	//Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РёР·Р±РёСЂР°С‚РµР»РµР№ РІ СѓР°СЃС‚РєРµ
 
-		void Statistics() const;	//Демонстрация статистики по участку
+		void Statistics() const;	//Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕ СѓС‡Р°СЃС‚РєСѓ
 		
-		~Poll();//Деструктор
+		~Poll();//Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 };
 
-//Класс избиратель
+//РљР»Р°СЃСЃ РёР·Р±РёСЂР°С‚РµР»СЊ
 class Elector{
 	friend Poll;
 	friend Candidate;
-	size_t PollNumber;	//Номер участка, к которму принадлежит избиратель
-	std::string FName;	//Имя
-	std::string SName;	//Фамилия
-	bool vote;		//Флаг голосования: 1 - есть возможность голосовать, 0 - уже проголосовал
-	std::string CandFName;	//Имя кандидата, за которого голосует избирателей
-	std::string CandSName;	//Фамилия кандидата, за которого голосует избирателей
+	size_t PollNumber;	//РќРѕРјРµСЂ СѓС‡Р°СЃС‚РєР°, Рє РєРѕС‚РѕСЂРјСѓ РїСЂРёРЅР°РґР»РµР¶РёС‚ РёР·Р±РёСЂР°С‚РµР»СЊ
+	std::string FName;	//РРјСЏ
+	std::string SName;	//Р¤Р°РјРёР»РёСЏ
+	bool vote;		//Р¤Р»Р°Рі РіРѕР»РѕСЃРѕРІР°РЅРёСЏ: 1 - РµСЃС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РіРѕР»РѕСЃРѕРІР°С‚СЊ, 0 - СѓР¶Рµ РїСЂРѕРіРѕР»РѕСЃРѕРІР°Р»
+	std::string CandFName;	//РРјСЏ РєР°РЅРґРёРґР°С‚Р°, Р·Р° РєРѕС‚РѕСЂРѕРіРѕ РіРѕР»РѕСЃСѓРµС‚ РёР·Р±РёСЂР°С‚РµР»РµР№
+	std::string CandSName;	//Р¤Р°РјРёР»РёСЏ РєР°РЅРґРёРґР°С‚Р°, Р·Р° РєРѕС‚РѕСЂРѕРіРѕ РіРѕР»РѕСЃСѓРµС‚ РёР·Р±РёСЂР°С‚РµР»РµР№
 	public:
-		Elector(std::string str1, std::string str2, size_t num);	//конструктор
-		Elector(Elector* base);	//конструктор копирования		
-		void ShowThis() const;	//печать характеристик избирателя
-		void Vote(std::string str1, std::string str2);	//метод голосования 
-		void Statistics() const;	//стаистика избирателя
+		Elector(std::string str1, std::string str2, size_t num);	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+		Elector(Elector* base);	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ		
+		void ShowThis() const;	//РїРµС‡Р°С‚СЊ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРє РёР·Р±РёСЂР°С‚РµР»СЏ
+		void Vote(std::string str1, std::string str2);	//РјРµС‚РѕРґ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ 
+		void Statistics() const;	//СЃС‚Р°РёСЃС‚РёРєР° РёР·Р±РёСЂР°С‚РµР»СЏ
 };
 
-//класс кандидат
+//РєР»Р°СЃСЃ РєР°РЅРґРёРґР°С‚
 class Candidate{
-	size_t VotesNum;	//кол-во голосов
-	Elector* parent;	//указатель на избирателя, от которого образован кандидат
+	size_t VotesNum;	//РєРѕР»-РІРѕ РіРѕР»РѕСЃРѕРІ
+	Elector* parent;	//СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РёР·Р±РёСЂР°С‚РµР»СЏ, РѕС‚ РєРѕС‚РѕСЂРѕРіРѕ РѕР±СЂР°Р·РѕРІР°РЅ РєР°РЅРґРёРґР°С‚
 	public:
-		Candidate(Elector* ptr);	//конструктор
-		bool compare(std::string str1, std::string str2)	//метод сравнивает строки с именем и фамилией избирателя, от которого образован кандидат
-		size_t GetVotes(){return VotesNum;}	//Метод возвращает кол-во голосов
-		void AddVote(){VotesNum++;}	//Метод добавления голосов
-		void PrintMe() const;	//Демонстрация хар-тик кандидата
+		Candidate(Elector* ptr);	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+		bool compare(std::string str1, std::string str2)	//РјРµС‚РѕРґ СЃСЂР°РІРЅРёРІР°РµС‚ СЃС‚СЂРѕРєРё СЃ РёРјРµРЅРµРј Рё С„Р°РјРёР»РёРµР№ РёР·Р±РёСЂР°С‚РµР»СЏ, РѕС‚ РєРѕС‚РѕСЂРѕРіРѕ РѕР±СЂР°Р·РѕРІР°РЅ РєР°РЅРґРёРґР°С‚
+		size_t GetVotes(){return VotesNum;}	//РњРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ РіРѕР»РѕСЃРѕРІ
+		void AddVote(){VotesNum++;}	//РњРµС‚РѕРґ РґРѕР±Р°РІР»РµРЅРёСЏ РіРѕР»РѕСЃРѕРІ
+		void PrintMe() const;	//Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ С…Р°СЂ-С‚РёРє РєР°РЅРґРёРґР°С‚Р°
 };
