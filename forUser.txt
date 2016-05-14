@@ -14,7 +14,7 @@ ShowElectors -> PollNum
 Merge PollNum1 <-> PollNum2
 AddElector PollNum FirstName SecondName
 DeleteElector PollNum FirstName SecondName
-Vote //äàëåå ñëåäîâàòü èíñòðóêöèÿì
+Vote //Далее следовать инструкциям, вводить ПОЛНОЕ ИМЯ
 AddCandidate PollNum FirstName SecondName
 DeleteCandidate FirtsName SecondName
 SelectWinner
