@@ -1,0 +1,20 @@
+CreateElection 
+StartElection
+FinishElection
+CloseElection
+Statistics
+Statistics -> PollNum
+AddPoll PollNum PollName
+DeletePoll -> PollNum
+ShowPolls
+ShowCandidates
+ShowElectors
+ShowElectors -> PollNum
+Merge PollNum1 <-> PollNum2
+AddElector PollNum FirstName SecondName
+DeleteElector PollNum FirstName SecondName
+Vote //далее следовать инструкциям
+AddCandidate PollNum FirstName SecondName
+DeleteCandidate FirtsName SecondName
+SelectWinner
+

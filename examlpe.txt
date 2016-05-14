@@ -1,0 +1,23 @@
+AddPoll 1 South
+AddPoll 2 North
+AddPoll 3 East
+AddElector 2 Ivan Ivanov
+AddElector 1 Anton Artemov
+AddElector 3 Max Tiger
+AddElector 3 Elena Kalinina
+ShowPolls
+ShowElectors
+Merge 1 <-> 2
+ShowPolls
+ShowElectors -> 1
+CreateElection
+AddCandidate 1 Ivan Ivanov
+AddCandidate 3 Elena Kalinina 
+DeleteCandidate Elena Kalinina
+AddCandidate 3 Max Tiger
+ShowCandidates
+StartElection
+FinishElection
+SelectWinner
+Statistics 
+CloseElection
