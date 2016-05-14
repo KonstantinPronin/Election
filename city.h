@@ -186,7 +186,7 @@ void City::SelectWinner(){
 }
 
 City::~City(){
-	CloseElection();
+	if ()ElectionStatus != -1) CloseElection();
 	for(size_t i = 0; i < polls.size(); i++) delete polls[i];
 	polls.clear();
 }
