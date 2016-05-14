@@ -1,3 +1,4 @@
+РЎРёРЅС‚Р°РєСЃРёСЃ РєРѕРјР°РЅРґ:
 CreateElection 
 StartElection
 FinishElection
@@ -13,7 +14,7 @@ ShowElectors -> PollNum
 Merge PollNum1 <-> PollNum2
 AddElector PollNum FirstName SecondName
 DeleteElector PollNum FirstName SecondName
-Vote //далее следовать инструкциям
+Vote //Г¤Г Г«ГҐГҐ Г±Г«ГҐГ¤Г®ГўГ ГІГј ГЁГ­Г±ГІГ°ГіГЄГ¶ГЁГїГ¬
 AddCandidate PollNum FirstName SecondName
 DeleteCandidate FirtsName SecondName
 SelectWinner
